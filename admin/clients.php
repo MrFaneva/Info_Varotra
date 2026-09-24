@@ -14,7 +14,7 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // Récupération de la liste des clients (du plus récent au plus ancien)
-// Adapte le nom de la colonne "date_inscription" si elle s'appelle différemment dans ta BDD (ex: "created_at")
+
 $stmt = $pdo->query("SELECT * FROM client ORDER BY id_client DESC");
 $clients = $stmt->fetchAll();
 ?>

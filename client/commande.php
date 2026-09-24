@@ -4,13 +4,13 @@
 require_once '../config/database.php';
 require_once '../includes/header.php';
 
-// Redirection si le client n'est pas connecté
+
 if (!isset($_SESSION['client_id'])) {
     header('Location: /Info_Varotra/client/connexion.php');
     exit();
 }
 
-// Redirection si le panier est vide
+
 if (empty($_SESSION['panier'])) {
     header('Location: /Info_Varotra/client/panier.php');
     exit();

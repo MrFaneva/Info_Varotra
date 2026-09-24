@@ -1,13 +1,13 @@
 <?php
 // Fichier : database/create_admin.php
 
-// Inclure la configuration de la base de données
+
 require_once '../config/database.php';
 
 // Informations du super administrateur par défaut
 $nom = 'Admin Principal';
 $email = 'admin@infovarotra.local';
-$mot_de_passe_clair = 'Admin123!'; // À changer en production !
+$mot_de_passe_clair = 'Admin123!'; 
 $role = 'super_admin';
 
 // Hachage du mot de passe
