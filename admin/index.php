@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Vérification des droits d'accès admin
+
 if (!isset($_SESSION['admin_id'])) {
     header('Location: /Info_Varotra/admin/login.php');
     exit();
@@ -19,32 +19,11 @@ $total_produits = $pdo->query("SELECT COUNT(*) FROM produit")->fetchColumn();
 $total_commandes = $pdo->query("SELECT COUNT(*) FROM commande")->fetchColumn();
 $total_services = $pdo->query("SELECT COUNT(*) FROM demande_service")->fetchColumn();
 $total_categories = $pdo->query("SELECT COUNT(*) FROM categorie")->fetchColumn();
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tableau de Bord - Administration Info_Varotra</title>
-    <link rel="stylesheet" href="/Info_Varotra/assets/css/style.css">
-</head>
-<body>
 
-<header>
-    <nav class="navbar">
-        <a href="/Info_Varotra/admin/index.php" class="logo">Admin_<span>Varotra</span></a>
-        <ul class="nav-links">
-            <li><a href="/Info_Varotra/admin/index.php">Tableau de bord</a></li>
-            <li><a href="/Info_Varotra/index.php" target="_blank">Voir le site public ↗</a></li>
-            <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
-            <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
-            <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
-            <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
-            <li><a href="/Info_Varotra/admin/clients.php">Clients</a></li>
-            <li><a href="/Info_Varotra/admin/deconnexion.php" class="btn-primary" style="background-color: #dc2626;">Déconnexion</a></li>
-        </ul>
-    </nav>
-</header>
+
+$page_title = "Tableau de Bord - Administration Info_Varotra";
+require_once __DIR__ . '/includes/header.php';
+?>
 
 <main class="container">
     <div style="margin-bottom: 2rem;">
@@ -52,7 +31,7 @@ $total_categories = $pdo->query("SELECT COUNT(*) FROM categorie")->fetchColumn()
         <p style="color: #64748b;">Bienvenue, <strong><?= htmlspecialchars($_SESSION['admin_nom']) ?></strong> (<?= htmlspecialchars($_SESSION['admin_role']) ?>)</p>
     </div>
 
-    <!-- Grille de statistiques -->
+    
     <div class="grid" style="margin-bottom: 3rem;">
         <a href="/Info_Varotra/admin/produits.php" style="text-decoration: none; color: inherit;">
             <div class="card" style="border-left: 4px solid #2563eb;">
@@ -91,4 +70,6 @@ $total_categories = $pdo->query("SELECT COUNT(*) FROM categorie")->fetchColumn()
     </div>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php 
+require_once __DIR__ . '/includes/footer.php';
+?>

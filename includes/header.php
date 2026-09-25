@@ -22,7 +22,14 @@ $panier_count = isset($_SESSION['panier']) ? array_sum($_SESSION['panier']) : 0;
     <nav class="navbar">
         <a href="/Info_Varotra/index.php" class="logo">Info_<span>Varotra</span></a>
         
-        <ul class="nav-links">
+        <!-- Bouton Menu Hamburger (trois barres) -->
+        <button class="menu-toggle" id="menuToggle" aria-label="Afficher le menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks">
             <li><a href="/Info_Varotra/index.php">Accueil</a></li>
             <li><a href="/Info_Varotra/index.php#produits">Produits</a></li>
             <li><a href="/Info_Varotra/index.php#services">Services</a></li>
@@ -43,3 +50,17 @@ $panier_count = isset($_SESSION['panier']) ? array_sum($_SESSION['panier']) : 0;
         </ul>
     </nav>
 </header>
+
+<!-- Script JS pour activer l'affichage du menu déroulant sur petit écran -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+        });
+    }
+});
+</script>

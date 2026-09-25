@@ -44,6 +44,7 @@ $demandes = $pdo->query("SELECT ds.*, s.nom_service, cl.nom, cl.prenom, cl.email
             <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
             <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
             <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
+            <li><a href="/Info_Varotra/admin/services.php">Services</a></li>
             <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
             <li><a href="/Info_Varotra/admin/deconnexion.php" style="color: #ef4444;">Déconnexion</a></li>
         </ul>
@@ -93,4 +94,4 @@ $demandes = $pdo->query("SELECT ds.*, s.nom_service, cl.nom, cl.prenom, cl.email
     </table>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php';?>

@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Si déjà connecté en tant qu'admin, redirection vers le tableau de bord
+
 if (isset($_SESSION['admin_id'])) {
     header('Location: /Info_Varotra/admin/index.php');
     exit();

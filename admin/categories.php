@@ -57,6 +57,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) 
 }
 
 $categories = $pdo->query("SELECT * FROM categorie ORDER BY nom_categorie ASC")->fetchAll();
+require_once __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -67,19 +68,7 @@ $categories = $pdo->query("SELECT * FROM categorie ORDER BY nom_categorie ASC")-
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <a href="/Info_Varotra/admin/index.php" class="logo">Admin_<span>Varotra</span></a>
-        <ul class="nav-links">
-            <li><a href="/Info_Varotra/admin/index.php">Tableau de bord</a></li>
-            <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
-            <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
-            <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
-            <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
-            <li><a href="/Info_Varotra/admin/deconnexion.php" style="color: #ef4444;">Déconnexion</a></li>
-        </ul>
-    </nav>
-</header>
+
 
 <main class="container">
     <h2>Gestion des Catégories</h2>
@@ -133,4 +122,4 @@ $categories = $pdo->query("SELECT * FROM categorie ORDER BY nom_categorie ASC")-
     </div>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php';?>

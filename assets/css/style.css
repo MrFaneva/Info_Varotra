@@ -24,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
 /* Header & Nav */
@@ -41,6 +42,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -84,6 +86,62 @@ header {
     background-color: var(--accent-hover);
 }
 
+/* Bouton Hamburger Mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Responsive Navbar pour Écrans Rétractés */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--primary);
+        padding: 1rem 0;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        gap: 1rem;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 0.5rem 0;
+    }
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
@@ -109,6 +167,8 @@ header {
     width: 90%;
     max-width: 1200px;
     margin: 3rem auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .section-title {
@@ -122,6 +182,43 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+}
+
+/* Carrousel / Scrolling Horizontal */
+.carousel-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0.5rem 0.2rem 1.5rem 0.2rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 300px;
+    max-width: 300px;
+}
+
+.btn-carousel {
+    padding: 0.5rem 1.2rem;
+    border: 2px solid var(--accent);
+    background: #ffffff;
+    color: var(--accent);
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-carousel:hover {
+    background: var(--accent);
+    color: #ffffff;
 }
 
 /* Cards (Produits & Services) */
@@ -171,19 +268,26 @@ header {
     width: fit-content;
 }
 
-/* Footer */
+/* Footer Responsive */
 footer {
     background-color: var(--primary);
     color: #94a3b8;
     text-align: center;
     padding: 2rem 1rem;
     margin-top: auto;
+    width: 100%;
 }
 
 footer a {
     color: #cbd5e1;
     text-decoration: none;
 }
+
+footer p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Styles pour les formulaires d'authentification */
 .auth-container {
     max-width: 450px;
@@ -260,5 +364,4 @@ footer a {
 
 .auth-links a:hover {
     text-decoration: underline;
-}s
-
+}

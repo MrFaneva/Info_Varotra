@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : jeu. 24 sep. 2026 à 09:52
+-- Généré le : ven. 25 sep. 2026 à 16:17
 -- Version du serveur : 8.0.46-0ubuntu0.24.04.3
 -- Version de PHP : 8.3.6
 
@@ -90,7 +90,8 @@ CREATE TABLE `client` (
 
 INSERT INTO `client` (`id_client`, `nom`, `prenom`, `email`, `mot_de_passe`, `telephone`, `adresse`, `date_inscription`, `actif`, `token_verification`) VALUES
 (1, 'ANDRIANARIJAONA', 'Henintsoa Faneva', 'fanevaah0501@gmail.com', '$2y$10$8VITDCkvaEKQpyMfH9w0KeHekxb2BAud0MLS.0pPvLTpWJID.OchO', '0381563729', 'Antananarivo', '2026-09-23 16:07:50', 0, NULL),
-(2, 'ANDRIANARIJAONA', 'Irintsoa Fanasina', 'fanasina0502@gmail.com', '$2y$10$sXEBPI4pOx60ZkfdiiKK9Ov46A/36Hoy31/uyRYvqqa6sIeC210gS', '0331436697', 'Antananarivo', '2026-09-23 19:46:05', 0, NULL);
+(2, 'ANDRIANARIJAONA', 'Irintsoa Fanasina', 'fanasina0502@gmail.com', '$2y$10$sXEBPI4pOx60ZkfdiiKK9Ov46A/36Hoy31/uyRYvqqa6sIeC210gS', '0331436697', 'Antananarivo', '2026-09-23 19:46:05', 0, NULL),
+(3, 'ANDRIANARIJAONA', 'Harentsoa Faniry', 'harentsofaniry@gmail.com', '$2y$10$YPV/pSzGvB1sCUxZKthsluyfi34rozi7K769DxZthwNrq8anpIGzW', '0340981216', 'ANTANANARIVO', '2026-09-24 15:18:24', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -105,6 +106,13 @@ CREATE TABLE `commande` (
   `montant_total` decimal(10,2) NOT NULL,
   `id_client` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `commande`
+--
+
+INSERT INTO `commande` (`id_commande`, `date_commande`, `statut`, `montant_total`, `id_client`) VALUES
+(2, '2026-09-25 10:10:55', 'en_attente', 100000.00, 2);
 
 -- --------------------------------------------------------
 
@@ -134,6 +142,13 @@ CREATE TABLE `ligne_commande` (
   `quantite` int NOT NULL,
   `prix_unitaire` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `ligne_commande`
+--
+
+INSERT INTO `ligne_commande` (`id_commande`, `id_produit`, `quantite`, `prix_unitaire`) VALUES
+(2, 10, 1, 100000.00);
 
 -- --------------------------------------------------------
 
@@ -176,11 +191,15 @@ INSERT INTO `produit` (`id_produit`, `nom_produit`, `description`, `prix`, `stoc
 (2, 'MacBook Air M2 13\"', 'Puce Apple M2, 8 Go RAM Unified, 256 Go SSD, Écran Liquid Retina, Coloris Gris Sidéral.', 5200000.00, 5, 'macbook_m2.jpg', 1, NULL),
 (3, 'Processeur AMD Ryzen 5 5600X', '6 cœurs / 12 threads, Fréquence 3.7 GHz (Boost 4.6 GHz), Socket AM4.', 850000.00, 15, 'ryzen_5600x.jpg', 2, NULL),
 (4, 'Carte Graphique RTX 4060 8GB', 'NVIDIA GeForce RTX 4060, 8 Go GDDR6, Ray Tracing, DLSS 3, PCI Express 4.0.', 1800000.00, 8, 'rtx_4060.jpg', 2, NULL),
-(5, 'Souris Logitech MX Master 3S', 'Souris sans fil ergonomique, capteur 8000 DPI, clics silencieux, connectivité Bluetooth/Unifying.', 450000.00, 20, 'logitech_mx3s.jpg', 3, NULL),
+(5, 'Souris Logitech MX Master 3S', 'Souris sans fil ergonomique, capteur 8000 DPI, clics silencieux, connectivité Bluetooth/Unifying.', 450000.00, 20, 'logitech_mx3s.jpg', 3, 'assets/images/boutton.png'),
 (6, 'Clavier Mécanique RGB Redragon K552', 'Clavier mécanique Gamer, Switchs Bleus, rétroéclairage RGB personnalisable, AZERTY.', 220000.00, 25, 'redragon_k552.jpg', 3, NULL),
-(7, 'Disque Dur Externe WD 1 To', 'Format 2.5 pouces, USB 3.0, sauvegarde automatique, compatible Windows et Mac.', 280000.00, 30, 'wd_1tb.jpg', 4, NULL),
+(7, 'Disque Dur Externe WD 1 To', 'Format 2.5 pouces, USB 3.0, sauvegarde automatique, compatible Windows et Mac.', 280000.00, 30, 'wd_1tb.jpg', 4, 'assets/images/quitter.png'),
 (8, 'SSD NVMe Samsung 980 1 To', 'Format M.2 NVMe PCIe 3.0, vitesse de lecture jusqu\'à 3500 Mo/s.', 420000.00, 18, 'samsung_980.jpg', 4, NULL),
-(9, 'Samsung Galaxy A34 5G', 'Écran Super AMOLED 120Hz, 128 Go stockage, 6 Go RAM, Triple appareil photo 48 MP.', 1350000.00, 12, 'galaxy_a34.jpg', 5, NULL);
+(9, 'Samsung Galaxy A34 5G', 'Écran Super AMOLED 120Hz, 128 Go stockage, 6 Go RAM, Triple appareil photo 48 MP.', 1350000.00, 12, 'galaxy_a34.jpg', 5, ''),
+(10, 'Chargeur de PC portable', 'Sous carton et en bon état.', 100000.00, 14, NULL, 3, ''),
+(12, 'Housse d\'Ordinateurs Portables', 'Protection assurée lors des chocs.', 25000.00, 24, NULL, 3, 'assets/images/boutton.png'),
+(13, 'Casque audio', 'Son Haute qualité', 40000.00, 1, NULL, 3, 'assets/images/boutton.png'),
+(14, 'Bouttons', 'Qualité haut de gamme, et touche tès fluide', 1500.00, 12, NULL, 2, 'assets/images/boutton.png');
 
 -- --------------------------------------------------------
 
@@ -203,7 +222,9 @@ CREATE TABLE `service` (
 INSERT INTO `service` (`id_service`, `nom_service`, `description`, `prix`, `duree_estimee`) VALUES
 (1, 'Maintenance & Nettoyage PC', 'Dépoussiérage, changement de pâte thermique, optimisation système', 30000.00, '2 heures'),
 (2, 'Installation Système / Formatage', 'Installation Windows 11/Linux avec pilotes et logiciels de base', 40000.00, '3 heures'),
-(3, 'Récupération de données', 'Diagnostic et extraction de données sur disque dur défectueux', 75000.00, '24 à 48 heures');
+(3, 'Récupération de données', 'Diagnostic et extraction de données sur disque dur défectueux', 75000.00, '24 à 48 heures'),
+(4, 'Formattage de clé USB', 'Fini en un rien de temps qu\'il ne faut pour le dire.', 5000.00, '30 minutes'),
+(5, 'Collage d\'écran', 'Client satisfait ou remboursé.', 15000.00, '4 heures');
 
 --
 -- Index pour les tables déchargées
@@ -291,13 +312,13 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `demande_service`
@@ -315,13 +336,13 @@ ALTER TABLE `paiement`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id_service` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_service` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées

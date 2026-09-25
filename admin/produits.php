@@ -42,6 +42,7 @@ $produits = $pdo->query("SELECT p.*, c.nom_categorie
             <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
             <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
             <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
+            <li><a href="/Info_Varotra/admin/services.php">Services</a></li>
             <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
             <li><a href="/Info_Varotra/admin/deconnexion.php" style="color: #ef4444;">Déconnexion</a></li>
         </ul>
@@ -83,4 +84,4 @@ $produits = $pdo->query("SELECT p.*, c.nom_categorie
     </table>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php';?>

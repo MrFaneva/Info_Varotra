@@ -17,6 +17,7 @@ if (!isset($_SESSION['admin_id'])) {
 
 $stmt = $pdo->query("SELECT * FROM client ORDER BY id_client DESC");
 $clients = $stmt->fetchAll();
+require_once __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,21 +28,6 @@ $clients = $stmt->fetchAll();
     <link rel="stylesheet" href="/Info_Varotra/assets/css/style.css">
 </head>
 <body>
-
-<header>
-    <nav class="navbar">
-        <a href="/Info_Varotra/admin/index.php" class="logo">Admin_<span>Varotra</span></a>
-        <ul class="nav-links">
-            <li><a href="/Info_Varotra/admin/index.php">Tableau de bord</a></li>
-            <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
-            <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
-            <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
-            <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
-            <li><a href="/Info_Varotra/admin/clients.php" style="font-weight: bold; color: var(--accent);">Clients</a></li>
-            <li><a href="/Info_Varotra/admin/deconnexion.php" class="btn-primary" style="background-color: #dc2626;">Déconnexion</a></li>
-        </ul>
-    </nav>
-</header>
 
 <main class="container">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
@@ -97,4 +83,4 @@ $clients = $stmt->fetchAll();
     <?php endif; ?>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php';?>

@@ -1,4 +1,6 @@
 <?php
+// Fichier : admin/produit_form.php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -42,8 +44,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_cat = (int)($_POST['id_categorie'] ?? 0);
     $image = trim($_POST['image_url'] ?? '');
 
-    if (empty($nom) || $prix <= 0 || $id_cat <= 0) {
-        $error = "Veuillez renseigner un nom, un prix valide et une catégorie.";
+    // AJOUT : Vérification du stock ($stock <= 0)
+    if (empty($nom) || $prix <= 0 || $id_cat <= 0 || $stock <= 0) {
+        $error = "Veuillez renseigner un nom, un prix valide, une catégorie et une quantité en stock supérieure à zéro.";
     } else {
         if ($id_produit > 0) {
             $stmt = $pdo->prepare("UPDATE produit SET nom_produit = :nom, description = :desc, prix = :prix, stock = :stock, id_categorie = :cat, image_url = :img WHERE id_produit = :id");
@@ -78,6 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
             <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
             <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
+            <li><a href="/Info_Varotra/admin/services.php">Services</a></li>
             <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
             <li><a href="/Info_Varotra/admin/deconnexion.php" style="color: #ef4444;">Déconnexion</a></li>
         </ul>
@@ -111,11 +115,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="form-group" style="display: flex; gap: 1rem;">
                 <div style="flex: 1;">
                     <label for="prix">Prix (Ar) *</label>
-                    <input type="number" step="0.01" id="prix" name="prix" value="<?= htmlspecialchars($produit['prix']) ?>" required>
+                    <input type="number" step="0.01" min="0.01" id="prix" name="prix" value="<?= htmlspecialchars($produit['prix']) ?>" required>
                 </div>
                 <div style="flex: 1;">
                     <label for="stock">Quantité en Stock *</label>
-                    <input type="number" id="stock" name="stock" value="<?= htmlspecialchars($produit['stock']) ?>" required>
+                    <!-- AJOUT : min="1" empêche la saisie de nombres <= 0 directement dans le navigateur -->
+                    <input type="number" min="1" id="stock" name="stock" value="<?= htmlspecialchars($produit['stock']) ?>" required>
                 </div>
             </div>
 
@@ -136,4 +141,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </main>
 
-<?php require_once '../includes/footer.php'; ?>
+<?php require_once __DIR__ . '/includes/footer.php';?>

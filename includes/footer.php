@@ -1,7 +1,7 @@
 <!-- Fichier : includes/footer.php -->
 
 <footer>
-    <div class="container" style="margin: 0 auto; padding-bottom: 1rem;">
+    <div class="container" style="margin-top: 0; margin-bottom: 0;">
         <p>&copy; <?= date('Y') ?> <strong>Info_Varotra</strong> - Tous droits réservés.</p>
         <p style="font-size: 0.85rem; margin-top: 0.5rem;">
             Matériels Informatiques & Services de Maintenance | Projet Développement Local
