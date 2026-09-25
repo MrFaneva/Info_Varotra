@@ -26,6 +26,8 @@ $demandes = $pdo->query("SELECT ds.*, s.nom_service, cl.nom, cl.prenom, cl.email
                         JOIN service s ON ds.id_service = s.id_service 
                         JOIN client cl ON ds.id_client = cl.id_client 
                         ORDER BY ds.date_rdv ASC")->fetchAll();
+require_once __DIR__ . '/includes/header.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -36,20 +38,6 @@ $demandes = $pdo->query("SELECT ds.*, s.nom_service, cl.nom, cl.prenom, cl.email
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <a href="/Info_Varotra/admin/index.php" class="logo">Admin_<span>Varotra</span></a>
-        <ul class="nav-links">
-            <li><a href="/Info_Varotra/admin/index.php">Tableau de bord</a></li>
-            <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
-            <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
-            <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
-            <li><a href="/Info_Varotra/admin/services.php">Services</a></li>
-            <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
-            <li><a href="/Info_Varotra/admin/deconnexion.php" style="color: #ef4444;">Déconnexion</a></li>
-        </ul>
-    </nav>
-</header>
 
 <main class="container">
     <h2>Demandes de Services & Rendez-vous</h2>

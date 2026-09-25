@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 25 sep. 2026 à 16:17
+-- Généré le : ven. 25 sep. 2026 à 18:32
 -- Version du serveur : 8.0.46-0ubuntu0.24.04.3
 -- Version de PHP : 8.3.6
 
@@ -84,15 +84,6 @@ CREATE TABLE `client` (
   `token_verification` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
---
--- Déchargement des données de la table `client`
---
-
-INSERT INTO `client` (`id_client`, `nom`, `prenom`, `email`, `mot_de_passe`, `telephone`, `adresse`, `date_inscription`, `actif`, `token_verification`) VALUES
-(1, 'ANDRIANARIJAONA', 'Henintsoa Faneva', 'fanevaah0501@gmail.com', '$2y$10$8VITDCkvaEKQpyMfH9w0KeHekxb2BAud0MLS.0pPvLTpWJID.OchO', '0381563729', 'Antananarivo', '2026-09-23 16:07:50', 0, NULL),
-(2, 'ANDRIANARIJAONA', 'Irintsoa Fanasina', 'fanasina0502@gmail.com', '$2y$10$sXEBPI4pOx60ZkfdiiKK9Ov46A/36Hoy31/uyRYvqqa6sIeC210gS', '0331436697', 'Antananarivo', '2026-09-23 19:46:05', 0, NULL),
-(3, 'ANDRIANARIJAONA', 'Harentsoa Faniry', 'harentsofaniry@gmail.com', '$2y$10$YPV/pSzGvB1sCUxZKthsluyfi34rozi7K769DxZthwNrq8anpIGzW', '0340981216', 'ANTANANARIVO', '2026-09-24 15:18:24', 0, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -106,13 +97,6 @@ CREATE TABLE `commande` (
   `montant_total` decimal(10,2) NOT NULL,
   `id_client` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `commande`
---
-
-INSERT INTO `commande` (`id_commande`, `date_commande`, `statut`, `montant_total`, `id_client`) VALUES
-(2, '2026-09-25 10:10:55', 'en_attente', 100000.00, 2);
 
 -- --------------------------------------------------------
 
@@ -142,13 +126,6 @@ CREATE TABLE `ligne_commande` (
   `quantite` int NOT NULL,
   `prix_unitaire` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Déchargement des données de la table `ligne_commande`
---
-
-INSERT INTO `ligne_commande` (`id_commande`, `id_produit`, `quantite`, `prix_unitaire`) VALUES
-(2, 10, 1, 100000.00);
 
 -- --------------------------------------------------------
 
@@ -224,7 +201,8 @@ INSERT INTO `service` (`id_service`, `nom_service`, `description`, `prix`, `dure
 (2, 'Installation Système / Formatage', 'Installation Windows 11/Linux avec pilotes et logiciels de base', 40000.00, '3 heures'),
 (3, 'Récupération de données', 'Diagnostic et extraction de données sur disque dur défectueux', 75000.00, '24 à 48 heures'),
 (4, 'Formattage de clé USB', 'Fini en un rien de temps qu\'il ne faut pour le dire.', 5000.00, '30 minutes'),
-(5, 'Collage d\'écran', 'Client satisfait ou remboursé.', 15000.00, '4 heures');
+(5, 'Collage d\'écran', 'Client satisfait ou remboursé.', 15000.00, '4 heures'),
+(6, 'Remplacement de la patte thermique', 'Client satisfait ou remboursé.', 25000.00, '2 heures');
 
 --
 -- Index pour les tables déchargées
@@ -312,19 +290,19 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_client` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `id_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_commande` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `demande_service`
 --
 ALTER TABLE `demande_service`
-  MODIFY `id_demande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_demande` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `paiement`
@@ -342,7 +320,7 @@ ALTER TABLE `produit`
 -- AUTO_INCREMENT pour la table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id_service` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_service` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées

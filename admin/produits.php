@@ -24,6 +24,7 @@ $produits = $pdo->query("SELECT p.*, c.nom_categorie
                         FROM produit p 
                         LEFT JOIN categorie c ON p.id_categorie = c.id_categorie 
                         ORDER BY p.id_produit DESC")->fetchAll();
+require_once __DIR__ . '/includes/header.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -34,20 +35,7 @@ $produits = $pdo->query("SELECT p.*, c.nom_categorie
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <a href="/Info_Varotra/admin/index.php" class="logo">Admin_<span>Varotra</span></a>
-        <ul class="nav-links">
-            <li><a href="/Info_Varotra/admin/index.php">Tableau de bord</a></li>
-            <li><a href="/Info_Varotra/admin/categories.php">Catégories</a></li>
-            <li><a href="/Info_Varotra/admin/produits.php">Produits</a></li>
-            <li><a href="/Info_Varotra/admin/commandes.php">Commandes</a></li>
-            <li><a href="/Info_Varotra/admin/services.php">Services</a></li>
-            <li><a href="/Info_Varotra/admin/demandes.php">Rendez-vous</a></li>
-            <li><a href="/Info_Varotra/admin/deconnexion.php" style="color: #ef4444;">Déconnexion</a></li>
-        </ul>
-    </nav>
-</header>
+
 
 <main class="container">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">

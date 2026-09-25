@@ -5,13 +5,13 @@ header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 require_once '../config/database.php';
 
 try {
-    // On récupère les colonnes sensibles (id, nom, prix, stock) pour les produits
+ 
     $stmt_p = $pdo->query("SELECT id_produit, nom_produit, prix, stock FROM produit");
     $produits = $stmt_p->fetchAll(PDO::FETCH_ASSOC);
-    // On crée un hash basé sur les données réelles (toute modification d'une lettre changera le md5)
+   
     $hash_prod = md5(json_encode($produits));
 
-    // On fait la même chose pour les services (ajustez les colonnes selon votre table)
+  
     $stmt_s = $pdo->query("SELECT id_service, nom_service, prix FROM service");
     $services = $stmt_s->fetchAll(PDO::FETCH_ASSOC);
     $hash_serv = md5(json_encode($services));

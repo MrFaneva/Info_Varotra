@@ -4,8 +4,7 @@
 $host = '127.0.0.1'; // ou 'localhost'
 $dbname = 'Info_Varotra';
 $username = 'root'; // Par défaut sur XAMPP/WAMP
-$password = 'Henintsoa0501!'; // Vide par défaut sur XAMPP/WAMP (à modifier selon ta config locale)
-
+$password = ''; // Changer le mot de passe par le vôtre si nécessaire
 try {
     // Création de l'instance PDO
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
